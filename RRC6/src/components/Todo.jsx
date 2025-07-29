@@ -1,9 +1,9 @@
-function Todo() {
+function Todo({task, description}) {
   return (
     <>
     <div className="todo-item">
-      <h2> Item </h2>
-      <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Ab, quisquam!</p>
+      <h2> {task} </h2>
+      <p>{description}</p>
       <button> Delete </button>
     </div>
     </>
