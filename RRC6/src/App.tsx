@@ -1,52 +1,35 @@
 import './App.css';
-import TodoTitle from './components/TodoTitle.jsx';
-import Todo from './components/Todo.jsx';
-import Popup from './components/Popup.jsx';
-import { useState, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Home from "./pages/Home.jsx";
+import About from "./pages/About.jsx";
+import Contact from "./pages/Contact.jsx";
+import Posts from "./pages/Posts.jsx";
+import Nav from './components/Nav.jsx';
+import Users from './pages/Users.jsx';
 
 
+// to use <nav> in Router, add Link to imports
+/**
+ * 1. Create "posts" component in pages folder
+ * 2. Create new route fot "/posts" URL
+ * 3. Render "posts" component at "/posts" route
+ */
 
 
 
 function App() {
-  const [openPopup, setOpenPopup]  = useState(false);
-
-  function togglePopup() {
-    setOpenPopup(true)
-    console.log('parent notify')
-  };
-
-  function closePopup() {
-    setOpenPopup(false)
-  }
-
-  useEffect(() => {
-    console.log('useEffect')
-  }, [])
 
   return (
-    <>
-    <TodoTitle />
-    <Todo task=" Finsih the React Course"
-    description="Study and take notes."
-    togglePopup={togglePopup}
-    />
-    <Todo task=" Finish the Frontend"
-    description=" Demonstrate your skills"
-    togglePopup={togglePopup}
-    />
-    <Todo task=" Get a $100k+ job"
-    description=" Work hard to get promoted"
-    togglePopup={togglePopup}
-    />
-    <Todo task=" Live Strong and enjoy life"
-    description=" Start a family"
-    togglePopup={togglePopup}
-    />
-    {openPopup && <Popup closePopup={closePopup} />} 
-
-    </>
+    <Router>
+      <Nav />
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/users/:username" element={ <Users /> } />
+        
+      <div></div>
+    </Router>
   )
 }
 
 export default App
+
